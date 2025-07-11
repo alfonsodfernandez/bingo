@@ -24,7 +24,21 @@ const io = new Server(server, {
 const PORT = process.env.PORT || 5000;
 
 // 3. MIDDLEWARE
-app.use(cors());
+
+// Configuración de CORS
+const whiteList = [process.env.CLIENT_URL]; // La lista de dominios permitidos
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whiteList.includes(origin)) {
+      // Puede consultar la API
+      callback(null, true);
+    } else {
+      // No está permitido
+      callback(new Error('Error de Cors'));
+    }
+  }
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
