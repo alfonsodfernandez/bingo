@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 1. CONFIGURACIÓN INICIAL Y ELEMENTOS DEL DOM ---
     const token = localStorage.getItem('bingoToken');
     const user = JSON.parse(localStorage.getItem('bingoUser'));
-    const API_URL = 'http://localhost:5000/api';
+    const API_URL = 'https://bingo-nr15.onrender.com/api';
 
     if (!token || !user) {
         window.location.href = 'index.html';

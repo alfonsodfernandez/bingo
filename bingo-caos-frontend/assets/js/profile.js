@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('bingoToken');
-    const API_URL = 'http://localhost:5000/api';
+    const API_URL = 'https://bingo-nr15.onrender.com/api';
 
     const params = new URLSearchParams(window.location.search);
     const userId = params.get('id');
