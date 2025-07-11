@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bingo del Caos Colectivo - Acceso</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+
+    <div class="bg-gray-800 p-8 rounded-lg shadow-lg max-w-sm w-full">
+        
+        <form id="login-form" class="space-y-6">
+            <h2 class="text-2xl font-bold text-center text-cyan-400">Iniciar Sesión</h2>
+            <div>
+                <label for="login-username" class="block text-sm font-medium text-gray-400">Usuario</label>
+                <input type="text" id="login-username" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500">
+            </div>
+            <div>
+                <label for="login-password" class="block text-sm font-medium text-gray-400">Contraseña</label>
+                <input type="password" id="login-password" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500">
+            </div>
+            <p id="login-error" class="text-red-500 text-sm hidden"></p>
+            <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-md transition duration-300">Entrar</button>
+            <p class="text-sm text-center text-gray-400">
+                ¿No tienes cuenta? <a href="#" id="show-register" class="font-medium text-cyan-400 hover:underline">Regístrate</a>
+            </p>
+        </form>
+
+        <form id="register-form" class="space-y-6 hidden">
+            <h2 class="text-2xl font-bold text-center text-cyan-400">Crear Cuenta</h2>
+            <div>
+                <label for="register-username" class="block text-sm font-medium text-gray-400">Usuario</label>
+                <input type="text" id="register-username" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500">
+            </div>
+            <div>
+                <label for="register-password" class="block text-sm font-medium text-gray-400">Contraseña</label>
+                <input type="password" id="register-password" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500">
+            </div>
+             <p id="register-error" class="text-red-500 text-sm hidden"></p>
+            <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-md transition duration-300">Registrarse</button>
+            <p class="text-sm text-center text-gray-400">
+                ¿Ya tienes cuenta? <a href="#" id="show-login" class="font-medium text-cyan-400 hover:underline">Inicia Sesión</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

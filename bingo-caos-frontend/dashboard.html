@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Bingo del Caos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <header class="bg-gray-800 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-cyan-400">Bingo del Caos</h1>
+            <div class="flex items-center gap-4">
+                <a href="friends.html" class="text-white hover:text-cyan-400">Amigos</a> <span class="text-white">Bienvenido, <strong id="username-display"></strong></span>
+                <button id="logout-btn" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md transition">Cerrar Sesión</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+        <div class="grid md:grid-cols-2 gap-8">
+            
+            <div class="bg-gray-800 p-6 rounded-lg">
+                <h2 class="text-2xl font-bold mb-4">Crear una Sala Nueva</h2>
+                <p class="text-gray-400 mb-4">Inicia una nueva partida y comparte el código con tus amigos.</p>
+                <button id="create-room-btn" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-md transition duration-300">Crear Sala</button>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-lg">
+                <h2 class="text-2xl font-bold mb-4">Unirse a una Sala</h2>
+                <form id="join-room-form" class="flex items-center gap-4">
+                    <input type="text" id="room-code-input" placeholder="Introduce el código" class="flex-grow bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 p-2">
+                    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md transition duration-300">Unirse</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+    
+    <section class="container mx-auto px-6 py-8">
+        <h2 class="text-2xl font-bold mb-4">Mis Salas</h2>
+        <div id="my-rooms-list" class="space-y-4">
+            </div>
+    </section>
+
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
