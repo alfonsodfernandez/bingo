@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('room-code-display').textContent = roomCode;
 
     // --- 2. CONEXIÓN CON SOCKET.IO ---
-    const socket = io('http://localhost:5000'); // Conecta al servidor de sockets
+    const socket = io('https://bingo-nr15.onrender.com'); // Conecta al servidor de sockets
 
     const hostControls = document.getElementById('host-controls');
     const startGameBtn = document.getElementById('start-game-btn');
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Modificamos fetchRoomDetails para usar la nueva función
     const fetchRoomDetails = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/api/rooms/details/${roomCode}`, {
+            const res = await fetch(`https://bingo-nr15.onrender.com/api/rooms/details/${roomCode}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const room = await res.json();

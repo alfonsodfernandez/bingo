@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginErrorEl = document.getElementById('login-error');
     const registerErrorEl = document.getElementById('register-error');
 
-    const API_URL = 'http://localhost:5000/api'; // La URL base de nuestro backend
+    const API_URL = 'https://bingo-nr15.onrender.com/api'; // La URL base de nuestro backend
 
     // --- Lógica para alternar entre formularios ---
     showRegisterLink.addEventListener('click', (e) => {

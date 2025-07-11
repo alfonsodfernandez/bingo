@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('bingoToken');
     const user = JSON.parse(localStorage.getItem('bingoUser'));
-    const API_URL = 'http://localhost:5000/api';
+    const API_URL = 'https://bingo-nr15.onrender.com/api';
 
     // ---- Protección de la Ruta ----
     // Si no hay token, no se puede estar aquí. ¡Fuera!
