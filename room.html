@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sala de Juego - Bingo del Caos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <header class="bg-gray-800 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-cyan-400">Sala de Bingo</h1>
+                <p class="text-gray-400">Código: <strong id="room-code-display" class="text-green-400"></strong></p>
+            </div>
+            <a href="dashboard.html" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-md transition duration-300">Volver al Dashboard</a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 grid lg:grid-cols-3 gap-8">
+        
+        <div class="lg:col-span-2 bg-gray-800 p-6 rounded-lg">
+            <h2 class="text-2xl font-bold mb-4">Estado de la Partida</h2>
+            <div id="game-area" class="text-center text-gray-400">
+                <p>Esperando a que el anfitrión inicie el juego...</p>
+                </div>
+        </div>
+
+        <aside class="bg-gray-800 p-6 rounded-lg space-y-6">
+            <div>
+                <div class="flex border-b border-gray-700">
+                    <button id="tab-stats" class="flex-1 py-2 text-center font-semibold border-b-2 border-cyan-400 text-white">Estadísticas</button>
+                    <button id="tab-log" class="flex-1 py-2 text-center font-semibold text-gray-400">Eventos</button>
+                </div>
+
+                <div id="content-stats" class="mt-4">
+                    </div>
+
+                <div id="content-log" class="mt-4 hidden max-h-48 overflow-y-auto">
+                     </div>
+            </div>
+            
+            <div>
+                <h3 class="text-lg font-bold mb-2">Añadir Idea</h3>
+                <form id="add-idea-form" class="flex gap-2">
+                    <input type="text" id="idea-input" placeholder="Escribe tu idea..." class="flex-grow bg-gray-700 border-gray-600 rounded-md p-2">
+                    <button type="submit" class="bg-green-600 hover:bg-green-700 font-bold px-4 rounded-md">+</button>
+                </form>
+            </div>
+            
+            <div>
+                <h3 class="text-lg font-bold mb-2">Jugadores Conectados</h3>
+                <ul id="player-list" class="list-none text-gray-300"></ul>
+            </div>
+            <div id="control-panel-container" class="mt-6 hidden">
+                <h3 class="text-lg font-bold mb-2">Tablero de Control</h3>
+                <div id="control-panel" class="space-y-2 max-h-64 overflow-y-auto"></div>
+            </div>
+
+    <div class="mt-6">
+        <h3 class="text-lg font-bold mb-2">Chat de la Sala</h3>
+        <div id="chat-messages" class="h-32 overflow-y-auto bg-gray-900 p-2 rounded-md mb-2">
+            </div>
+        <form id="chat-form" class="flex gap-2">
+            <input type="text" id="chat-input" placeholder="Escribe un mensaje..." class="flex-grow bg-gray-700 border-gray-600 rounded-md p-2 text-sm">
+            <button type="submit" class="bg-purple-600 hover:bg-purple-700 font-bold px-4 rounded-md">Enviar</button>
+        </form>
+    </div>
+            <div id="host-controls" class="hidden">
+                <h3 class="text-lg font-bold mb-2">Controles del Anfitrión</h3>
+                <button id="start-game-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">Iniciar Juego</button>
+            </div>
+        </aside>
+
+    </main>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="assets/js/room.js"></script>
+</body>
+</html>
