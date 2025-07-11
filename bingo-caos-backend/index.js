@@ -14,44 +14,42 @@ const socketHandler = require('./socket/socketHandler');
 // 2. INICIALIZACIÓN
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
-  }
-});
-//molo
-const PORT = process.env.PORT || 5000;
 
-// 3. MIDDLEWARE
-
-// Configuración de CORS
-const whiteList = [process.env.CLIENT_URL];
+// 3. CONFIGURACIÓN DE CORS (UNIFICADA)
+const whiteList = [process.env.CLIENT_URL]; // La URL de tu frontend desde Render
 const corsOptions = {
   origin: function (origin, callback) {
-    // Permitir peticiones sin origen (como apps de escritorio o Postman) y las de nuestra whitelist
+    // Para depuración: Muestra en los logs de Render quién está llamando
+    console.log('Petición CORS desde el origen:', origin);
+
+    // Permitir peticiones de nuestra whitelist y peticiones sin origen (como Postman)
     if (!origin || whiteList.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Error de Cors'));
+      callback(new Error('Error de Cors: Origen no permitido'));
     }
   }
 };
-app.use(cors(corsOptions));
+
+// 4. MIDDLEWARE
+app.use(cors(corsOptions)); // Usamos la configuración unificada para Express
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// 4. CONEXIÓN A LA BASE DE DATOS (MÉTODO MEJORADO)
+// 5. INICIALIZACIÓN DE SOCKET.IO
+const io = new Server(server, {
+  cors: corsOptions // Usamos LA MISMA configuración unificada para Socket.IO
+});
+
+// 6. CONEXIÓN A LA BASE DE DATOS
 mongoose.connect(process.env.MONGO_URI, {
-    // Estas opciones son las mejores prácticas para evitar advertencias de deprecación
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
 .then(() => console.log('✅ Conectado a MongoDB Atlas'))
 .catch((err) => console.error('❌ Error al conectar a MongoDB:', err));
 
-
-// 5. RUTAS
+// 7. RUTAS
 app.use('/api/users', userRoutes);
 app.use('/api/rooms', roomRoutes);
 app.use('/api/friends', friendsRoutes);
@@ -60,10 +58,11 @@ app.get('/', (req, res) => {
   res.send('<h1>¡El servidor del Bingo del Caos Colectivo está funcionando!</h1>');
 });
 
-// 6. LÓGICA DE SOCKET.IO
+// 8. LÓGICA DE SOCKET.IO
 socketHandler(io);
 
-// 7. INICIAR EL SERVIDOR
+// 9. INICIAR EL SERVIDOR
+const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`🚀 Servidor corriendo en el puerto ${PORT}`);
 });
