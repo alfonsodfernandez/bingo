@@ -26,14 +26,13 @@ const PORT = process.env.PORT || 5000;
 // 3. MIDDLEWARE
 
 // Configuración de CORS
-const whiteList = [process.env.CLIENT_URL]; // La lista de dominios permitidos
+const whiteList = [process.env.CLIENT_URL];
 const corsOptions = {
   origin: function (origin, callback) {
-    if (whiteList.includes(origin)) {
-      // Puede consultar la API
+    // Permitir peticiones sin origen (como apps de escritorio o Postman) y las de nuestra whitelist
+    if (!origin || whiteList.includes(origin)) {
       callback(null, true);
     } else {
-      // No está permitido
       callback(new Error('Error de Cors'));
     }
   }
